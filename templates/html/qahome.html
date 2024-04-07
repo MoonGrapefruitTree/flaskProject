@@ -1,0 +1,35 @@
+{% extends "html/base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/qahome.css" />
+{% endblock %}
+
+{% block title %}
+    问答列表
+{% endblock %}
+
+{% block body %}
+    <h1>问答列表</h1>
+    <div class="container">
+    {% for question in questions %}
+    <div class="faq-container">
+      <div class="faq">
+        <h3 class="faq-title">
+            <a href="/qa/detail?question_id={{ question.id }}">{{ question.title }}</a>
+            <p class="author">{{ question.author.username }}</p>
+            <p class="time">{{ question.create_time }}</p>
+        </h3>
+
+        <p class="faq-text">
+          {{ question.content }}
+        </p>
+
+        <button class="faq-toggle">展开</button>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="/static/js/qahome.js"></script>
+{% endblock %}

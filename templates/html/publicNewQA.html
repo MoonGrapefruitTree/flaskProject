@@ -1,0 +1,25 @@
+{% extends "html/base.html" %}
+{% block css %}
+<link rel="stylesheet" href="/static/css/publicNewQA.css" />
+{% endblock %}
+
+{% block title %}
+    新问题
+{% endblock %}
+
+{% block body %}
+    <form action="" method="post">
+    <div class="container_title">
+        <input id="queation_title" class="queation_title" name="title" placeholder="请输入问题" ></input>
+    </div>
+
+    <div class="container_description">
+      <textarea id="queation_description" class="queation_description" name="content" placeholder="请输入问题描述" ></textarea>
+    </div>
+
+    <button class="btn">提交</button>
+    </form>
+{% endblock %}
+
+{% block js %}
+{% endblock %}

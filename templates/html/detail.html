@@ -1,0 +1,53 @@
+{% extends "html/base.html" %}
+{% block css %}
+    <link rel="stylesheet" href="/static/css/detail.css"/>
+{% endblock %}
+
+{% block title %}
+    问题详情
+{% endblock %}
+
+{% block body %}
+      <div class="qusetion-container">
+      <div class="qusetion">
+{#        <img class="qusetion-image"#}
+{#            src="https://randomuser.me/api/portraits/women/46.jpg"#}
+{#            alt="user"#}
+{#            class="user-image"#}
+{#        />#}
+          <div class="qusetion-base">
+              <h3 class="title">{{ question.title }}</h3>
+              <p class="author">{{ question.author.username }}</p>
+              <p class="time">{{ question.create_time }}</p>
+          </div>
+      </div>
+      <div class="split-line"></div>
+      <p class="content">
+          {{ question.content }}
+      </p>
+      <div class="split-line"></div>
+
+      <form action="/qa/publicAns?question_id={{ question.id }}" method="post">
+          <input type="text" name="content" class="new_ans" placeholder="请输入回答">
+          <button type="submit" class="btn">发布新回答</button>
+      </form>
+      <div class="split-line"></div>
+          <div class="ans-content">
+
+          {% for answer in question.answers %}
+              <div class="answer">
+                  <h3 class="ans">{{ answer.content }}</h3>
+                  <p class="ans-author">{{ answer.author.username }}</p>
+                  <p class="ans-time">{{ answer.create_time }}</p>
+              </div>
+              <div class="ans-split-line"></div>
+          {% endfor %}
+
+
+
+          </div>
+      </div>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
